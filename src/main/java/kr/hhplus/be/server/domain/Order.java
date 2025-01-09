@@ -11,8 +11,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
-@Table(name = "order") // 테이블 이름을 복수형으로 변경 (Optional)
+@Table(name = "order")
 public class Order {
 
     @Id
@@ -46,7 +47,8 @@ public class Order {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true) // orphanRemoval 추가
+    @Builder.Default
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderDetail> orderDetails = new ArrayList<>();
 
     public static Order create(User user, UserCoupon userCoupon, Integer totalPrice, Integer discountAmount) {

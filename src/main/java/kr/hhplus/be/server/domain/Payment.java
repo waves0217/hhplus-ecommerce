@@ -3,6 +3,7 @@ package kr.hhplus.be.server.domain;
 import jakarta.persistence.*;
 import kr.hhplus.be.server.domain.enums.PaymentStatus;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "payment")
 public class Payment {

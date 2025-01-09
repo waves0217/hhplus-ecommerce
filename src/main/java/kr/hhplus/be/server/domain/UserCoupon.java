@@ -28,6 +28,7 @@ public class UserCoupon {
     @JoinColumn(name = "coupon_id", nullable = false)
     private Coupon coupon;
 
+    @Builder.Default
     @OneToMany(mappedBy = "userCoupon")
     private List<Order> orders = new ArrayList<>();
 

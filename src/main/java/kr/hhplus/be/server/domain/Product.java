@@ -39,6 +39,7 @@ public class Product {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    @Builder.Default
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails = new ArrayList<>();
 

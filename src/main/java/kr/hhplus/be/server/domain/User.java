@@ -31,9 +31,11 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Balance balance;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserCoupon> userCoupons = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
 

@@ -47,6 +47,7 @@ public class Coupon {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    @Builder.Default
     @OneToMany(mappedBy = "coupon", orphanRemoval = true)
     private List<UserCoupon> userCoupons = new ArrayList<>();
 
