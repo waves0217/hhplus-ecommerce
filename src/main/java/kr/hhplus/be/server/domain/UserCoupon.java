@@ -1,6 +1,5 @@
 package kr.hhplus.be.server.domain;
 
-
 import jakarta.persistence.*;
 import kr.hhplus.be.server.domain.enums.UserCouponStatus;
 import lombok.*;
@@ -12,6 +11,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "user_coupon")
 public class UserCoupon {
