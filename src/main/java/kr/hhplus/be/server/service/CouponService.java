@@ -45,7 +45,7 @@ public class CouponService {
 
     @Transactional(readOnly = true)
     public List<UserCoupon> getUserCoupons(Long userId) {
-        return userCouponRepository.findByUserId(userId);
+        return userCouponRepository.findByUser_UserId(userId);
     }
 
     @Transactional

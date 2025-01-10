@@ -41,7 +41,7 @@ dependencies {
 	compileOnly("org.projectlombok:lombok:1.18.36")
 	annotationProcessor("org.projectlombok:lombok")
 
-	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.0")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
 
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")

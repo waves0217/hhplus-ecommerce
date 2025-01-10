@@ -48,7 +48,7 @@ class BalanceServiceTest {
         when(balanceRepository.findById(1L)).thenReturn(Optional.of(balance));
 
         // When
-        balanceService.rechargeBalance(1L, 500);
+        balanceService.chargeBalance(1L, 500);
 
         // Then
         verify(balanceRepository).save(balance);

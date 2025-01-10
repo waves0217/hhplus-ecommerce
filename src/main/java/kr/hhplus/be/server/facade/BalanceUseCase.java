@@ -16,8 +16,8 @@ public class BalanceUseCase {
         return balanceService.getBalance(userId);
     }
 
-    public void rechargeUserBalance(Long userId, Integer amount) {
-        balanceService.rechargeBalance(userId, amount);
+    public void chargeUserBalance(Long userId, Integer amount) {
+        balanceService.chargeBalance(userId, amount);
     }
 
     public void deductUserBalance(Long userId, Integer amount) {

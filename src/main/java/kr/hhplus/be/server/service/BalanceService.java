@@ -22,7 +22,7 @@ public class BalanceService {
     }
 
     @Transactional
-    public void rechargeBalance(Long userId, Integer amount) {
+    public void chargeBalance(Long userId, Integer amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("금액은 0보다 커야 합니다.");
         }
