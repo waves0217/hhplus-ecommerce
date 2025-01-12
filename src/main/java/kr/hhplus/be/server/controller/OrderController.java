@@ -1,10 +1,13 @@
 package kr.hhplus.be.server.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import kr.hhplus.be.server.dto.OrderResponse;
+import kr.hhplus.be.server.dto.request.OrderCreateRequest;
+import kr.hhplus.be.server.facade.OrderUseCase;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,29 +15,35 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/orders")
+@Tag(name = "Order API", description = "주문 관련 API를 제공합니다.")
 public class OrderController {
 
+    private final OrderUseCase orderUseCase;
+
+    public OrderController(OrderUseCase orderUseCase) { this.orderUseCase = orderUseCase; }
+
+    /**
+     * 주문 생성
+     */
     @PostMapping
-    public ResponseEntity<Map<String, Object>> createOrder(@RequestBody Map<String, Object> request) {
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        response.put("data", Map.of(
-                "orderId", 123,
-                "totalPrice", 45000,
-                "discountedPrice", 40000,
-                "remainingBalance", 10000,
-                "products", List.of(
-                        Map.of("productId", 1, "productName", "Product A", "quantity", 2, "price", 20000),
-                        Map.of("productId", 3, "productName", "Product C", "quantity", 1, "price", 5000)
-                ),
-                "coupon", Map.of(
-                        "couponId", 10,
-                        "name", "10% Discount",
-                        "discountAmount", 5000,
-                        "discountType", "PERCENT"
-                )
-        ));
+    @Operation(summary = "주문 생성", description = "사용자와 상품 목록을 기반으로 주문을 생성합니다.")
+    public ResponseEntity<OrderResponse> createOrder(@RequestBody OrderCreateRequest request) {
+        OrderResponse response = orderUseCase.createOrder(
+                request.getUserId(),
+                request.getItems(),
+                request.getCouponId()
+        );
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    /**
+     * 주문 상세 조회
+     */
+    @GetMapping("/{orderId}")
+    @Operation(summary = "주문 상세 조회", description = "특정 주문의 상세 정보를 조회합니다.")
+    public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable Long orderId) {
+        OrderResponse response = orderUseCase.getOrderDetails(orderId);
         return ResponseEntity.ok(response);
     }
+
 }

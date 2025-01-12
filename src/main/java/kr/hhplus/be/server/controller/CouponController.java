@@ -1,45 +1,47 @@
 package kr.hhplus.be.server.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import kr.hhplus.be.server.domain.User;
+import kr.hhplus.be.server.dto.UserCouponResponse;
+import kr.hhplus.be.server.dto.request.CouponIssueRequest;
+import kr.hhplus.be.server.facade.CouponUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/coupon")
+@Tag(name = "Coupon API", description = "쿠폰 관련 API를 제공합니다.")
 public class CouponController {
 
+    private final CouponUseCase couponUseCase;
+
+    public CouponController(final CouponUseCase couponUseCase) {this.couponUseCase = couponUseCase;}
+
+    /**
+     * 쿠폰 조회
+     */
     @GetMapping("/users/{userId}")
-    public ResponseEntity<Map<String, Object>> getUserCoupons(@PathVariable int userId) {
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        response.put("data", Map.of(
-                "userId", userId,
-                "coupon", List.of(
-                        Map.of("userCouponId", 123, "couponName", "10% 할인", "discountRate", 10,
-                                "discountType", "PERCENT", "couponId", 22, "expiredAt", "2026-01-01T00:00:00", "useYn", "N")
-                )
-        ));
-        return ResponseEntity.ok(response);
+    @Operation(summary = "쿠폰 조회", description = "사용자의 쿠폰을 조회합니다.")
+    public ResponseEntity<List<UserCouponResponse>> getUserCoupons(@PathVariable Long userId) {
+        List<UserCouponResponse> responses = couponUseCase.getUserCoupons(userId);
+        return ResponseEntity.ok(responses);
     }
 
+    /**
+     * 쿠폰 발급
+     */
     @PostMapping("/issue")
-    public ResponseEntity<Map<String, Object>> issueCoupon(@RequestBody Map<String, Object> request) {
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        response.put("data", Map.of(
-                "userCouponId", 123,
-                "userId", request.get("userId"),
-                "couponId", request.get("couponId"),
-                "couponName", "New Year Discount",
-                "issuedAt", "2024-12-31T12:00:00",
-                "expiredAt", "2025-01-31T12:00:00",
-                "status", "ISSUED"
-        ));
+    @Operation(summary = "쿠폰 발급", description = "특정 쿠폰을 사용자에게 발급합니다.")
+    public ResponseEntity<UserCouponResponse> issueCoupon(@RequestBody CouponIssueRequest request) {
+        // 사용자 생성 (DB에 저장된 User 객체가 필요함)
+        User user = User.builder()
+                .userId(request.getUserId())
+                .build();
+
+        UserCouponResponse response = couponUseCase.issueCoupon(request.getCouponId(), user);
         return ResponseEntity.ok(response);
     }
 }

@@ -1,6 +1,7 @@
 package kr.hhplus.be.server.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.hhplus.be.server.dto.BalanceChargeRequest;
 import kr.hhplus.be.server.dto.BalanceResponse;
 import kr.hhplus.be.server.facade.BalanceUseCase;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/balance")
+@Tag(name = "Balance API", description = "잔액 관련 API를 제공합니다.")
 public class BalanceController {
 
     private final BalanceUseCase balanceUseCase;

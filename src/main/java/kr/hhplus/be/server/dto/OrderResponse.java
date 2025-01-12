@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 public class OrderResponse {
     private final Long orderId;
     private final int totalPrice;
-    private final int discount;
-    private final int finalPrice;
+    private final int discountAmount;
+    private final int chargedAmount;
     private final List<OrderDetailResponse> orderDetails;
 
-    private OrderResponse(Long orderId, int totalPrice, int discount, int finalPrice, List<OrderDetailResponse> orderDetails) {
+    private OrderResponse(Long orderId, int totalPrice, int discountAmount, int chargedAmount, List<OrderDetailResponse> orderDetails) {
         this.orderId = orderId;
         this.totalPrice = totalPrice;
-        this.discount = discount;
-        this.finalPrice = finalPrice;
+        this.discountAmount = discountAmount;
+        this.chargedAmount = chargedAmount;
         this.orderDetails = orderDetails;
     }
 

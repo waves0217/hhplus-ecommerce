@@ -64,9 +64,8 @@ public class OrderService {
             product.reduceStock(item.getQuantity());
             productRepository.save(product);
 
-            // 주문 상세 추가
+            // 총 가격 계산
             totalPrice += product.getPrice() * item.getQuantity();
-            orderDetails.add(new OrderDetail(null, null, product, item.getQuantity(), product.getPrice(), null, null));
         }
 
         // 쿠폰 할인 적용
@@ -91,15 +90,28 @@ public class OrderService {
         balance.subtractAmount(finalPrice);
         balanceRepository.save(balance);
 
+        // 주문 생성
+        Order order = Order.create(balance.getUser(), userCoupon, totalPrice, discount);
+
+        // 주문 상세 추가 (Order와 연관 설정)
+        for (OrderItemRequest item : items) {
+            Product product = productRepository.findById(item.getProductId())
+                    .orElseThrow(() -> new IllegalArgumentException("상품 정보를 찾을 수 없습니다."));
+            OrderDetail orderDetail = OrderDetail.create(order, product, item.getQuantity(), product.getPrice());
+            orderDetails.add(orderDetail);
+        }
+
+        // Order의 orderDetails 동기화
+        order.getOrderDetails().addAll(orderDetails);
+
         // 주문 저장
-        Order order = new Order(null, balance.getUser(), userCoupon, discount, finalPrice, totalPrice,
-                OrderStatus.COMPLETED, LocalDateTime.now(), LocalDateTime.now(), orderDetails);
         return orderRepository.save(order);
     }
 
+
     @Transactional(readOnly = true)
     public Order getOrderDetails(Long orderId) {
-        return orderRepository.findById(orderId)
+        return orderRepository.findByIdWithDetailsAndProduct(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("주문 정보를 찾을 수 없습니다."));
     }
 }
