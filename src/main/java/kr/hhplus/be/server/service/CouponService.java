@@ -25,7 +25,7 @@ public class CouponService {
     @Transactional
     public UserCoupon issueCouponToUser(Long couponId, User user) {
         // 쿠폰 조회
-        Coupon coupon = couponRepository.findById(couponId)
+        Coupon coupon = couponRepository.findCouponForUpdate(couponId)
                 .orElseThrow(() -> new IllegalArgumentException("쿠폰이 존재하지 않습니다."));
 
         // 재고 확인

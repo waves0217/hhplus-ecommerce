@@ -40,7 +40,7 @@ public class PaymentService {
     @Transactional
     public void completePayment(Long paymentId) {
         // 결제 조회
-        Payment payment = paymentRepository.findById(paymentId)
+        Payment payment = paymentRepository.findPaymentForUpdate(paymentId)
                 .orElseThrow(() -> new IllegalArgumentException("결제 정보를 찾을 수 없습니다."));
 
         if (payment.getStatus() != PaymentStatus.PENDING) {
@@ -55,7 +55,7 @@ public class PaymentService {
     @Transactional
     public void failPayment(Long paymentId) {
         // 결제 조회
-        Payment payment = paymentRepository.findById(paymentId)
+        Payment payment = paymentRepository.findPaymentForUpdate(paymentId)
                 .orElseThrow(() -> new IllegalArgumentException("결제 정보를 찾을 수 없습니다."));
 
         if (payment.getStatus() != PaymentStatus.PENDING) {

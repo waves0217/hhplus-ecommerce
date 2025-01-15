@@ -32,7 +32,7 @@ public class BalanceService {
             throw new IllegalArgumentException("금액은 0보다 커야 합니다.");
         }
 
-        Balance balance = balanceRepository.findById(userId)
+        Balance balance = balanceRepository.findBalanceForUpdate(userId)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 잔액을 찾을 수 없습니다."));
         balance.addAmount(amount);
         balanceRepository.save(balance);
@@ -47,7 +47,7 @@ public class BalanceService {
             throw new IllegalArgumentException("금액은 0보다 커야 합니다.");
         }
 
-        Balance balance = balanceRepository.findById(userId)
+        Balance balance = balanceRepository.findBalanceForUpdate(userId)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 잔액을 찾을 수 없습니다."));
         balance.subtractAmount(amount);
         balanceRepository.save(balance);

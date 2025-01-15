@@ -39,7 +39,7 @@ public class ProductService {
 
     @Transactional
     public void increaseStock(Long productId, int quantity) {
-        Product product = productRepository.findById(productId)
+        Product product = productRepository.findProductForUpdate(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
         product.increaseStock(quantity);
         productRepository.save(product);
@@ -47,7 +47,7 @@ public class ProductService {
 
     @Transactional
     public void reduceStock(Long productId, int quantity) {
-        Product product = productRepository.findById(productId)
+        Product product = productRepository.findProductForUpdate(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
         product.reduceStock(quantity);
         productRepository.save(product);

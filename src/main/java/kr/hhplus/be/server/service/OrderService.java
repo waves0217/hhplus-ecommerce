@@ -37,13 +37,13 @@ public class OrderService {
     @Transactional
     public Order createOrder(Long userId, List<OrderItemRequest> items, Long couponId) {
         // 사용자 잔액 조회
-        Balance balance = balanceRepository.findById(userId)
+        Balance balance = balanceRepository.findBalanceForUpdate(userId)
                 .orElseThrow(() -> new IllegalArgumentException("사용자 잔액 정보를 찾을 수 없습니다."));
 
         // 쿠폰 조회
         UserCoupon userCoupon = null;
         if (couponId != null) {
-            userCoupon = userCouponRepository.findById(couponId)
+            userCoupon = userCouponRepository.findUserCouponForUpdate(couponId)
                     .orElseThrow(() -> new IllegalArgumentException("쿠폰을 찾을 수 없습니다."));
             if (userCoupon.getStatus() == UserCouponStatus.USED) {
                 throw new IllegalStateException("이미 사용된 쿠폰입니다.");
@@ -54,7 +54,7 @@ public class OrderService {
         List<OrderDetail> orderDetails = new ArrayList<>();
         int totalPrice = 0;
         for (OrderItemRequest item : items) {
-            Product product = productRepository.findById(item.getProductId())
+            Product product = productRepository.findProductForUpdate(item.getProductId())
                     .orElseThrow(() -> new IllegalArgumentException("상품 정보를 찾을 수 없습니다."));
             if (product.getStock() < item.getQuantity()) {
                 throw new IllegalStateException("재고가 부족합니다: " + product.getName());
