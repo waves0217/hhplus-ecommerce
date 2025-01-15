@@ -1,6 +1,9 @@
 package kr.hhplus.be.server.service;
 
 import kr.hhplus.be.server.domain.Balance;
+import kr.hhplus.be.server.domain.BalanceHistory;
+import kr.hhplus.be.server.domain.enums.BalanceHistoryTransactionType;
+import kr.hhplus.be.server.repository.BalanceHistoryRepository;
 import kr.hhplus.be.server.repository.BalanceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class BalanceService {
 
     private final BalanceRepository balanceRepository;
+    private final BalanceHistoryRepository balanceHistoryRepository;
 
-    public BalanceService(BalanceRepository balanceRepository) {
+    public BalanceService(BalanceRepository balanceRepository, BalanceHistoryRepository balanceHistoryRepository) {
         this.balanceRepository = balanceRepository;
+        this.balanceHistoryRepository = balanceHistoryRepository;
     }
 
     @Transactional(readOnly = true)
@@ -31,6 +36,9 @@ public class BalanceService {
                 .orElseThrow(() -> new IllegalArgumentException("사용자 잔액을 찾을 수 없습니다."));
         balance.addAmount(amount);
         balanceRepository.save(balance);
+
+        BalanceHistory balanceHistory = BalanceHistory.create(balance.getUser(), amount, BalanceHistoryTransactionType.CHARGE);
+        balanceHistoryRepository.save(balanceHistory);
     }
 
     @Transactional
