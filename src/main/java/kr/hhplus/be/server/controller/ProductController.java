@@ -1,52 +1,61 @@
 package kr.hhplus.be.server.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import kr.hhplus.be.server.dto.ProductResponse;
+import kr.hhplus.be.server.dto.TopSellingProductResponse;
+import kr.hhplus.be.server.facade.ProductUseCase;
+import kr.hhplus.be.server.facade.TopSellingProductsUseCase;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
+@Tag(name = "Product API", description = "상품 관련 API를 제공합니다.")
 public class ProductController {
 
+    private final ProductUseCase productUseCase;
+    private final TopSellingProductsUseCase topSellingProductsUseCase;
+
+    public ProductController(ProductUseCase productUseCase, TopSellingProductsUseCase topSellingProductsUseCase) {
+        this.productUseCase = productUseCase;
+        this.topSellingProductsUseCase = topSellingProductsUseCase;
+    }
+
+    /**
+     * 상품 목록 조회
+     */
     @GetMapping
-    public ResponseEntity<Map<String, Object>> getProducts(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(required = false) String keyword) {
-
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        Map<String, Object> data = new HashMap<>();
-        data.put("page", Map.of("number", page, "size", size, "totalPages", 5, "totalElements", 50));
-        data.put("items", List.of(
-                Map.of("productId", 1, "productName", "Product A", "price", 10000, "stock", 50),
-                Map.of("productId", 2, "productName", "Product B", "price", 20000, "stock", 30)
-        ));
-        response.put("data", data);
-
+    @Operation(summary = "상품 목록 조회", description = "모든 상품 목록을 페이징 형태로 조회합니다.")
+    public ResponseEntity<Page<ProductResponse>> getProducts(Pageable pageable) {
+        Page<ProductResponse> response = productUseCase.getProducts(pageable);
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/top")
-    public ResponseEntity<Map<String, Object>> getTopProducts() {
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        response.put("data", Map.of(
-                "period", Map.of("startDate", "2025-01-01", "endDate", "2025-01-03"),
-                "topProducts", List.of(
-                        Map.of("productId", 1, "productName", "Product A", "totalSold", 50, "price", 10000),
-                        Map.of("productId", 2, "productName", "Product B", "totalSold", 40, "price", 20000)
-                )
-        ));
-
+    /**
+     * 상품 상세 조회
+     */
+    @GetMapping("/{productId}")
+    @Operation(summary = "상품 상세 조회", description = "특정 상품의 상세 정보를 조회합니다.")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable Long productId) {
+        ProductResponse response = productUseCase.getProductById(productId);
         return ResponseEntity.ok(response);
     }
+
+    /**
+     * 상위 판매량 상품 조회
+     */
+    @GetMapping("/top-selling")
+    @Operation(summary = "인기 상품 조회", description = "최근 3일간 가장 많이 팔린 상품을 조회합니다.")
+    public ResponseEntity<List<TopSellingProductResponse>> getTopSellingProducts(@RequestParam(defaultValue = "5") int limit) {
+        List<TopSellingProductResponse> response = topSellingProductsUseCase.getTopSellingProducts(limit);
+        return ResponseEntity.ok(response);
+    }
+
 }

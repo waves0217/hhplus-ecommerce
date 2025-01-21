@@ -1,36 +1,44 @@
 package kr.hhplus.be.server.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import kr.hhplus.be.server.dto.BalanceChargeRequest;
+import kr.hhplus.be.server.dto.BalanceResponse;
+import kr.hhplus.be.server.facade.BalanceUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
 @RequestMapping("/api/balance")
+@Tag(name = "Balance API", description = "잔액 관련 API를 제공합니다.")
 public class BalanceController {
 
-    @PostMapping("/charge")
-    public ResponseEntity<Map<String, Object>> chargeBalance(@RequestBody Map<String, Object> request) {
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        response.put("data", Map.of(
-                "userId", request.get("userId"),
-                "balance", 20000
-        ));
-        return ResponseEntity.ok(response);
+    private final BalanceUseCase balanceUseCase;
+
+    public BalanceController(BalanceUseCase balanceUseCase) {
+        this.balanceUseCase = balanceUseCase;
     }
 
+    /**
+     * 사용자 잔액 조회
+     */
     @GetMapping("/{userId}")
-    public ResponseEntity<Map<String, Object>> getBalance(@PathVariable int userId) {
-        // Mock 데이터
-        Map<String, Object> response = new HashMap<>();
-        response.put("result", "SUCCESS");
-        response.put("data", Map.of(
-                "userId", userId,
-                "balance", 15000
-        ));
-        return ResponseEntity.ok(response);
+    @Operation(summary = "사용자 잔액 조회", description = "사용자의 현재 잔액을 조회합니다.")
+    public ResponseEntity<BalanceResponse> getUserBalance(@PathVariable Long userId) {
+        Integer balance = balanceUseCase.getUserBalance(userId);
+        return ResponseEntity.ok(new BalanceResponse(userId, balance));
     }
+
+    /**
+     * 사용자 잔액 충전
+     */
+    @PostMapping("/{userId}/charge")
+    @Operation(summary = "사용자 잔액 충전", description = "사용자의 잔액을 충전합니다.")
+    public ResponseEntity<Void> chargeUserBalance(
+            @PathVariable Long userId,
+            @RequestBody BalanceChargeRequest request) {
+        balanceUseCase.chargeUserBalance(userId, request.getAmount());
+        return ResponseEntity.ok().build();
+    }
+
 }
