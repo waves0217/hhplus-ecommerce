@@ -1,7 +1,15 @@
 -- User 초기 데이터
 INSERT INTO user (user_id, name, created_at, updated_at) VALUES
                                                              (1, 'Alice', NOW(), NOW()),
-                                                             (2, 'Bob', NOW(), NOW());
+                                                             (2, 'test2', NOW(), NOW()),
+                                                             (3, 'test3', NOW(), NOW()),
+                                                             (4, 'test4', NOW(), NOW()),
+                                                             (5, 'test5', NOW(), NOW()),
+                                                             (6, 'test6', NOW(), NOW()),
+                                                             (7, 'test7', NOW(), NOW()),
+                                                             (8, 'test8', NOW(), NOW()),
+                                                             (9, 'test9', NOW(), NOW()),
+                                                             (10, 'Bob', NOW(), NOW());
 
 -- Balance 초기 데이터
 INSERT INTO balance (user_id, amount, created_at, updated_at) VALUES
@@ -20,7 +28,7 @@ INSERT INTO user_coupon (user_coupon_id, user_id, coupon_id, status, created_at,
 
 -- Product 초기 데이터
 INSERT INTO product (product_id, name, price, stock, status, created_at, updated_at) VALUES
-                                                                                         (1, 'Product A', 1000, 100, 'AVAILABLE', NOW(), NOW()),
+                                                                                         (1, 'Product A', 1000, 5, 'AVAILABLE', NOW(), NOW()),
                                                                                          (2, 'Product B', 2000, 50, 'AVAILABLE', NOW(), NOW());
 
 -- Order 초기 데이터

@@ -40,6 +40,12 @@ public class Balance {
         }
         this.amount -= amountToSubtract;
     }
-
+    public void setAmount(Integer newAmount) {
+        if (newAmount < 0) {
+            throw new IllegalArgumentException("잔액은 0 이상이어야 합니다.");
+        }
+        this.amount = newAmount;
+        this.updatedAt = LocalDateTime.now();
+    }
 }
 
