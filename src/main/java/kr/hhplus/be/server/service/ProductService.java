@@ -1,6 +1,8 @@
 package kr.hhplus.be.server.service;
 
 import kr.hhplus.be.server.domain.enums.ProductStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProductService {
+
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
 
     private final ProductRepository productRepository;
 
@@ -47,10 +51,15 @@ public class ProductService {
 
     @Transactional
     public void reduceStock(Long productId, int quantity) {
+        log.info("재고 감소 요청 - productId={}, 요청 수량={}", productId, quantity);
+
         Product product = productRepository.findProductForUpdate(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품을 찾을 수 없습니다."));
+
+        log.info("현재 재고: {}", product.getStock());
         product.reduceStock(quantity);
         productRepository.save(product);
+        log.info("차감 후 재고: {}", product.getStock());
     }
 }
 

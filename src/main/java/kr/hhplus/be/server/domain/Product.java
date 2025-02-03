@@ -61,9 +61,14 @@ public class Product {
     }
 
     public void reduceStock(int quantity) {
-        if (quantity > this.stock) {
-            throw new IllegalStateException("감소할 재고 수량은 0보다 커야 합니다.");
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("감소할 재고 수량은 0보다 커야 합니다.");
         }
+
+        if (this.stock < quantity) {
+            throw new IllegalStateException("재고가 부족하여 해당 수량만큼 차감할 수 없습니다.");
+        }
+
         this.stock -= quantity;
         this.updatedAt = LocalDateTime.now();
     }

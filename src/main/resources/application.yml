@@ -16,13 +16,13 @@ spring:
     generate-ddl: false
     show-sql: false
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate.timezone.default_storage: NORMALIZE_UTC
       hibernate.jdbc.time_zone: UTC
   sql:
     init:
-      mode: embedded
+      mode: always
       schema-locations: classpath:schema.sql
       data-locations: classpath:data.sql
 
