@@ -2,6 +2,7 @@ package kr.hhplus.be.server.service;
 
 import kr.hhplus.be.server.dto.TopSellingProductDto;
 import kr.hhplus.be.server.repository.OrderDetailRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class TopSellingService {
         this.orderDetailRepository = orderDetailRepository;
     }
 
+    @Cacheable(value = "topSellingProducts", key = "#limit", cacheManager = "cacheManager")
     public List<TopSellingProductDto> getTopSellingProducts(int limit) {
         LocalDateTime threeDaysAgo = LocalDateTime.now().minusDays(3);
         Pageable pageable = PageRequest.of(0, limit);
