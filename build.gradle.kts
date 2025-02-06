@@ -38,6 +38,12 @@ dependencies {
     // DB
 	runtimeOnly("com.mysql:mysql-connector-j")
 
+	// Spring Boot Redis 지원 (Lettuce 사용)
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
+	// Redisson (분산 락)
+	implementation("org.redisson:redisson-spring-boot-starter:3.17.7")
+
 	compileOnly("org.projectlombok:lombok:1.18.36")
 	annotationProcessor("org.projectlombok:lombok")
 
