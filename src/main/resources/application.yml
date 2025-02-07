@@ -22,7 +22,7 @@ spring:
       hibernate.jdbc.time_zone: UTC
   sql:
     init:
-      mode: always
+      mode: never
       schema-locations: classpath:schema.sql
       data-locations: classpath:data.sql
 
