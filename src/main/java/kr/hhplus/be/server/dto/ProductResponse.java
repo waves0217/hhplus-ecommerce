@@ -1,6 +1,6 @@
 package kr.hhplus.be.server.dto;
 
-import kr.hhplus.be.server.domain.Product;
+import kr.hhplus.be.server.domain.product.Product;
 import kr.hhplus.be.server.domain.enums.ProductStatus;
 import lombok.Getter;
 

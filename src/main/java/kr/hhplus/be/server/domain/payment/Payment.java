@@ -1,7 +1,8 @@
-package kr.hhplus.be.server.domain;
+package kr.hhplus.be.server.domain.payment;
 
 import jakarta.persistence.*;
 import kr.hhplus.be.server.domain.enums.PaymentStatus;
+import kr.hhplus.be.server.domain.order.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

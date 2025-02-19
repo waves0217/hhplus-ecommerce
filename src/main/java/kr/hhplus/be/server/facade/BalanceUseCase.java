@@ -1,6 +1,6 @@
 package kr.hhplus.be.server.facade;
 
-import kr.hhplus.be.server.service.BalanceService;
+import kr.hhplus.be.server.domain.balance.BalanceService;
 import org.springframework.stereotype.Component;
 
 @Component

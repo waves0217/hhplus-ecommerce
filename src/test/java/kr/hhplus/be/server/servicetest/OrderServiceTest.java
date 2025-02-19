@@ -1,15 +1,15 @@
 package kr.hhplus.be.server.servicetest;
 
-import kr.hhplus.be.server.domain.Balance;
-import kr.hhplus.be.server.domain.Order;
-import kr.hhplus.be.server.domain.OrderDetail;
-import kr.hhplus.be.server.domain.Product;
+import kr.hhplus.be.server.domain.balance.Balance;
+import kr.hhplus.be.server.domain.order.Order;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetail;
+import kr.hhplus.be.server.domain.product.Product;
 import kr.hhplus.be.server.dto.OrderItemRequest;
-import kr.hhplus.be.server.repository.BalanceRepository;
-import kr.hhplus.be.server.repository.OrderRepository;
-import kr.hhplus.be.server.repository.ProductRepository;
-import kr.hhplus.be.server.repository.UserCouponRepository;
-import kr.hhplus.be.server.service.OrderService;
+import kr.hhplus.be.server.domain.balance.BalanceRepository;
+import kr.hhplus.be.server.domain.order.OrderRepository;
+import kr.hhplus.be.server.domain.product.ProductRepository;
+import kr.hhplus.be.server.domain.userCoupon.UserCouponRepository;
+import kr.hhplus.be.server.domain.order.OrderService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

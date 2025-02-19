@@ -1,6 +1,5 @@
-package kr.hhplus.be.server.repository;
+package kr.hhplus.be.server.domain.orderDetail;
 
-import kr.hhplus.be.server.domain.OrderDetail;
 import kr.hhplus.be.server.dto.TopSellingProductDto;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

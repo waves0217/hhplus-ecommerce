@@ -1,10 +1,8 @@
-package kr.hhplus.be.server.service;
+package kr.hhplus.be.server.domain.balance;
 
-import kr.hhplus.be.server.domain.Balance;
-import kr.hhplus.be.server.domain.BalanceHistory;
+import kr.hhplus.be.server.domain.balanceHistory.BalanceHistory;
 import kr.hhplus.be.server.domain.enums.BalanceHistoryTransactionType;
-import kr.hhplus.be.server.repository.BalanceHistoryRepository;
-import kr.hhplus.be.server.repository.BalanceRepository;
+import kr.hhplus.be.server.domain.balanceHistory.BalanceHistoryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

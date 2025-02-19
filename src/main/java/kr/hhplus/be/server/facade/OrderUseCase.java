@@ -1,9 +1,9 @@
 package kr.hhplus.be.server.facade;
 
-import kr.hhplus.be.server.domain.Order;
+import kr.hhplus.be.server.domain.order.Order;
 import kr.hhplus.be.server.dto.OrderItemRequest;
 import kr.hhplus.be.server.dto.OrderResponse;
-import kr.hhplus.be.server.service.OrderService;
+import kr.hhplus.be.server.domain.order.OrderService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

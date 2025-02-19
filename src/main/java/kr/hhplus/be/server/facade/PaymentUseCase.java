@@ -1,8 +1,8 @@
 package kr.hhplus.be.server.facade;
 
-import kr.hhplus.be.server.domain.Payment;
+import kr.hhplus.be.server.domain.payment.Payment;
 import kr.hhplus.be.server.dto.PaymentResponse;
-import kr.hhplus.be.server.service.PaymentService;
+import kr.hhplus.be.server.domain.payment.PaymentService;
 import org.springframework.stereotype.Component;
 
 @Component

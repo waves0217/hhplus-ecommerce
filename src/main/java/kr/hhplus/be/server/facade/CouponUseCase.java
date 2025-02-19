@@ -1,9 +1,9 @@
 package kr.hhplus.be.server.facade;
 
-import kr.hhplus.be.server.domain.User;
-import kr.hhplus.be.server.domain.UserCoupon;
+import kr.hhplus.be.server.domain.user.User;
+import kr.hhplus.be.server.domain.userCoupon.UserCoupon;
 import kr.hhplus.be.server.dto.UserCouponResponse;
-import kr.hhplus.be.server.service.CouponService;
+import kr.hhplus.be.server.domain.coupon.CouponService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

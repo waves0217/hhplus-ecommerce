@@ -1,6 +1,5 @@
-package kr.hhplus.be.server.repository;
+package kr.hhplus.be.server.domain.user;
 
-import kr.hhplus.be.server.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,6 +1,5 @@
-package kr.hhplus.be.server.repository;
+package kr.hhplus.be.server.domain.order;
 
-import kr.hhplus.be.server.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

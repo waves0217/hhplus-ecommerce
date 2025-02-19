@@ -1,13 +1,13 @@
 package kr.hhplus.be.server.servicetest;
 
-import kr.hhplus.be.server.domain.Product;
+import kr.hhplus.be.server.domain.product.Product;
 import kr.hhplus.be.server.domain.enums.ProductStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import kr.hhplus.be.server.repository.ProductRepository;
-import kr.hhplus.be.server.service.ProductService;
+import kr.hhplus.be.server.domain.product.ProductRepository;
+import kr.hhplus.be.server.domain.product.ProductService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

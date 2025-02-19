@@ -1,7 +1,6 @@
-package kr.hhplus.be.server.repository;
+package kr.hhplus.be.server.domain.userCoupon;
 
 import jakarta.persistence.LockModeType;
-import kr.hhplus.be.server.domain.UserCoupon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;

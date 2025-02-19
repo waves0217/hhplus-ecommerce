@@ -3,7 +3,7 @@ package kr.hhplus.be.server.facade;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.hhplus.be.server.dto.TopSellingProductDto;
 import kr.hhplus.be.server.dto.TopSellingProductResponse;
-import kr.hhplus.be.server.service.TopSellingService;
+import kr.hhplus.be.server.domain.product.TopSellingService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,6 +1,7 @@
-package kr.hhplus.be.server.domain;
+package kr.hhplus.be.server.domain.coupon;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.userCoupon.UserCoupon;
 import kr.hhplus.be.server.domain.enums.CouponStatus;
 import kr.hhplus.be.server.domain.enums.DiscountType;
 import lombok.*;

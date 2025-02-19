@@ -1,6 +1,9 @@
-package kr.hhplus.be.server.domain;
+package kr.hhplus.be.server.domain.order;
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetail;
+import kr.hhplus.be.server.domain.user.User;
+import kr.hhplus.be.server.domain.userCoupon.UserCoupon;
 import kr.hhplus.be.server.domain.enums.OrderStatus;
 import lombok.*;
 

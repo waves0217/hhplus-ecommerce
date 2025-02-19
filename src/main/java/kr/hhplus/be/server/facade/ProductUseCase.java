@@ -4,12 +4,10 @@ import kr.hhplus.be.server.domain.enums.ProductStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import kr.hhplus.be.server.domain.Product;
+import kr.hhplus.be.server.domain.product.Product;
 import kr.hhplus.be.server.dto.ProductResponse;
-import kr.hhplus.be.server.service.ProductService;
+import kr.hhplus.be.server.domain.product.ProductService;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class ProductUseCase {

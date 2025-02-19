@@ -1,6 +1,6 @@
 package kr.hhplus.be.server.dto;
 
-import kr.hhplus.be.server.domain.Coupon;
+import kr.hhplus.be.server.domain.coupon.Coupon;
 import kr.hhplus.be.server.domain.enums.DiscountType;
 import lombok.Getter;
 

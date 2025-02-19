@@ -1,6 +1,6 @@
 package kr.hhplus.be.server.dto;
 
-import kr.hhplus.be.server.domain.Order;
+import kr.hhplus.be.server.domain.order.Order;
 import lombok.Getter;
 
 import java.util.List;

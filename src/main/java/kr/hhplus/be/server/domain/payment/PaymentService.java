@@ -1,14 +1,14 @@
-package kr.hhplus.be.server.service;
+package kr.hhplus.be.server.domain.payment;
 
-import kr.hhplus.be.server.domain.*;
+import kr.hhplus.be.server.domain.balance.Balance;
+import kr.hhplus.be.server.domain.balance.BalanceRepository;
 import kr.hhplus.be.server.domain.enums.PaymentStatus;
-import kr.hhplus.be.server.repository.*;
+import kr.hhplus.be.server.domain.order.Order;
+import kr.hhplus.be.server.domain.order.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 @Service
 public class PaymentService {

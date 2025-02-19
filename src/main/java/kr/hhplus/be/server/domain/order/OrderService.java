@@ -1,18 +1,18 @@
-package kr.hhplus.be.server.service;
+package kr.hhplus.be.server.domain.order;
 
-import kr.hhplus.be.server.domain.*;
+import kr.hhplus.be.server.domain.balance.Balance;
 import kr.hhplus.be.server.domain.enums.DiscountType;
-import kr.hhplus.be.server.domain.enums.OrderStatus;
 import kr.hhplus.be.server.domain.enums.UserCouponStatus;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetail;
+import kr.hhplus.be.server.domain.product.Product;
+import kr.hhplus.be.server.domain.userCoupon.UserCoupon;
 import kr.hhplus.be.server.dto.OrderItemRequest;
-import kr.hhplus.be.server.repository.BalanceRepository;
-import kr.hhplus.be.server.repository.OrderRepository;
-import kr.hhplus.be.server.repository.ProductRepository;
-import kr.hhplus.be.server.repository.UserCouponRepository;
+import kr.hhplus.be.server.domain.balance.BalanceRepository;
+import kr.hhplus.be.server.domain.product.ProductRepository;
+import kr.hhplus.be.server.domain.userCoupon.UserCouponRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

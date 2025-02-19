@@ -1,6 +1,6 @@
 package kr.hhplus.be.server.dto;
 
-import kr.hhplus.be.server.domain.Payment;
+import kr.hhplus.be.server.domain.payment.Payment;
 import kr.hhplus.be.server.domain.enums.PaymentStatus;
 import lombok.Getter;
 

@@ -1,11 +1,9 @@
-package kr.hhplus.be.server.service;
+package kr.hhplus.be.server.domain.coupon;
 
-import kr.hhplus.be.server.domain.Coupon;
-import kr.hhplus.be.server.domain.User;
-import kr.hhplus.be.server.domain.UserCoupon;
+import kr.hhplus.be.server.domain.user.User;
+import kr.hhplus.be.server.domain.userCoupon.UserCoupon;
 import kr.hhplus.be.server.domain.enums.UserCouponStatus;
-import kr.hhplus.be.server.repository.CouponRepository;
-import kr.hhplus.be.server.repository.UserCouponRepository;
+import kr.hhplus.be.server.domain.userCoupon.UserCouponRepository;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.stereotype.Service;

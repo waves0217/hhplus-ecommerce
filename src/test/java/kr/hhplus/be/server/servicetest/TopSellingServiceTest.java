@@ -1,10 +1,10 @@
 package kr.hhplus.be.server.servicetest;
 
-import kr.hhplus.be.server.domain.OrderDetail;
-import kr.hhplus.be.server.domain.Product;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetail;
+import kr.hhplus.be.server.domain.product.Product;
 import kr.hhplus.be.server.dto.TopSellingProductDto;
-import kr.hhplus.be.server.repository.OrderDetailRepository;
-import kr.hhplus.be.server.service.TopSellingService;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetailRepository;
+import kr.hhplus.be.server.domain.product.TopSellingService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

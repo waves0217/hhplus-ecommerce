@@ -1,9 +1,14 @@
 package kr.hhplus.be.server;
 
-import kr.hhplus.be.server.domain.*;
+import kr.hhplus.be.server.domain.coupon.Coupon;
 import kr.hhplus.be.server.domain.enums.PaymentStatus;
 import kr.hhplus.be.server.domain.enums.ProductStatus;
 import kr.hhplus.be.server.domain.enums.UserCouponStatus;
+import kr.hhplus.be.server.domain.order.Order;
+import kr.hhplus.be.server.domain.payment.Payment;
+import kr.hhplus.be.server.domain.product.Product;
+import kr.hhplus.be.server.domain.user.User;
+import kr.hhplus.be.server.domain.userCoupon.UserCoupon;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -115,8 +120,8 @@ class DomainTest {
     @DisplayName("UserCoupon 생성 성공 - 기본 상태 UNUSED로 생성")
     void testCreateUserCoupon() {
         // Given
-        User user = new User(); 
-        Coupon coupon = new Coupon(); 
+        User user = new User();
+        Coupon coupon = new Coupon();
 
         // When
         UserCoupon userCoupon = UserCoupon.create(user, coupon);

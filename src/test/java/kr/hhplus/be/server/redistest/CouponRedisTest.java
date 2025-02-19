@@ -1,12 +1,12 @@
 package kr.hhplus.be.server.redistest;
 
-import kr.hhplus.be.server.domain.Coupon;
-import kr.hhplus.be.server.domain.User;
+import kr.hhplus.be.server.domain.coupon.Coupon;
+import kr.hhplus.be.server.domain.user.User;
 import kr.hhplus.be.server.domain.enums.CouponStatus;
 import kr.hhplus.be.server.domain.enums.DiscountType;
-import kr.hhplus.be.server.repository.CouponRepository;
-import kr.hhplus.be.server.repository.UserRepository;
-import kr.hhplus.be.server.service.CouponService;
+import kr.hhplus.be.server.domain.coupon.CouponRepository;
+import kr.hhplus.be.server.domain.user.UserRepository;
+import kr.hhplus.be.server.domain.coupon.CouponService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

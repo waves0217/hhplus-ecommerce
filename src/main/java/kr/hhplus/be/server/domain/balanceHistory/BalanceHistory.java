@@ -1,7 +1,8 @@
-package kr.hhplus.be.server.domain;
+package kr.hhplus.be.server.domain.balanceHistory;
 
 
 import jakarta.persistence.*;
+import kr.hhplus.be.server.domain.user.User;
 import kr.hhplus.be.server.domain.enums.BalanceHistoryTransactionType;
 import lombok.*;
 

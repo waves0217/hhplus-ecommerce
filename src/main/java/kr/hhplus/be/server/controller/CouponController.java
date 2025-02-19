@@ -2,7 +2,7 @@ package kr.hhplus.be.server.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import kr.hhplus.be.server.domain.User;
+import kr.hhplus.be.server.domain.user.User;
 import kr.hhplus.be.server.dto.UserCouponResponse;
 import kr.hhplus.be.server.dto.request.CouponIssueRequest;
 import kr.hhplus.be.server.facade.CouponUseCase;

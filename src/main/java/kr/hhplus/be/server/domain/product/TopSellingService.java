@@ -1,7 +1,7 @@
-package kr.hhplus.be.server.service;
+package kr.hhplus.be.server.domain.product;
 
 import kr.hhplus.be.server.dto.TopSellingProductDto;
-import kr.hhplus.be.server.repository.OrderDetailRepository;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetailRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

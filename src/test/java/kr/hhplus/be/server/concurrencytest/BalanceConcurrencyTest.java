@@ -1,9 +1,8 @@
 package kr.hhplus.be.server.concurrencytest;
 
 
-import kr.hhplus.be.server.domain.Balance;
-import kr.hhplus.be.server.repository.BalanceRepository;
-import kr.hhplus.be.server.service.BalanceService;
+import kr.hhplus.be.server.domain.balance.BalanceRepository;
+import kr.hhplus.be.server.domain.balance.BalanceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 
-import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

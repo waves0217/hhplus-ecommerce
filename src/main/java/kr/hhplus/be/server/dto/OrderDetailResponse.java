@@ -1,6 +1,6 @@
 package kr.hhplus.be.server.dto;
 
-import kr.hhplus.be.server.domain.OrderDetail;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetail;
 import lombok.Getter;
 
 @Getter

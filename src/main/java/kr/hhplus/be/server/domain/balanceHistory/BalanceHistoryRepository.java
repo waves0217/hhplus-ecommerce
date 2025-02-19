@@ -1,6 +1,5 @@
-package kr.hhplus.be.server.repository;
+package kr.hhplus.be.server.domain.balanceHistory;
 
-import kr.hhplus.be.server.domain.BalanceHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BalanceHistoryRepository extends JpaRepository<BalanceHistory, Long> {

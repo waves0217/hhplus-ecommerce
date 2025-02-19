@@ -1,7 +1,8 @@
-package kr.hhplus.be.server.domain;
+package kr.hhplus.be.server.domain.product;
 
 import jakarta.persistence.*;
 import kr.hhplus.be.server.domain.enums.ProductStatus;
+import kr.hhplus.be.server.domain.orderDetail.OrderDetail;
 import lombok.*;
 
 import java.time.LocalDateTime;

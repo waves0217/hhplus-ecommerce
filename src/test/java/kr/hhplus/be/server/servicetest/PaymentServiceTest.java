@@ -1,7 +1,7 @@
 package kr.hhplus.be.server.servicetest;
 
-import kr.hhplus.be.server.domain.Order;
-import kr.hhplus.be.server.domain.Payment;
+import kr.hhplus.be.server.domain.order.Order;
+import kr.hhplus.be.server.domain.payment.Payment;
 import kr.hhplus.be.server.domain.enums.PaymentStatus;
 import kr.hhplus.be.server.dto.PaymentResponse;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import kr.hhplus.be.server.facade.PaymentUseCase;
-import kr.hhplus.be.server.service.PaymentService;
+import kr.hhplus.be.server.domain.payment.PaymentService;
 
 @ExtendWith(MockitoExtension.class)
 class PaymentServiceTest {
